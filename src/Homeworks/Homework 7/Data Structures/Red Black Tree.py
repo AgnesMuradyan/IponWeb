@@ -293,20 +293,20 @@ class RedBlackTree:
 
 
 
-t1 = RedBlackTree()
-t1.insert(8)
-t1.insert(5)
-t1.insert(17)
-t1.insert(15)
-t1.insert(18)
-t1.insert(25)
-t1.inorder(t1.root)
-t1.insert(40)
-print("******************************************")
-t1.inorder(t1.root)
-t1.insert(80)
-print("******************************************")
-t1.inorder(t1.root)
+# t1 = RedBlackTree()
+# t1.insert(8)
+# t1.insert(5)
+# t1.insert(17)
+# t1.insert(15)
+# t1.insert(18)
+# t1.insert(25)
+# t1.inorder(t1.root)
+# t1.insert(40)
+# print("******************************************")
+# t1.inorder(t1.root)
+# t1.insert(80)
+# print("******************************************")
+# t1.inorder(t1.root)
 
 
 

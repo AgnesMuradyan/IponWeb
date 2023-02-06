@@ -157,21 +157,6 @@ class BinarySearchTree:
 
 
 
-#
-# bst = BinarySearchTree()
-# bst.insert(15)
-# bst.insert(5)
-# bst.insert(10)
-# bst.insert(12)
-# bst.insert(20)
-# bst.insert(13)
-# bst.insert(4)
-# bst.inorder(bst.root)
-# print("\nAfter")
-# bst.delete(15)
-# bst.inorder(bst.root)
-
-
 t2 = BinarySearchTree()
 t2.insert(10)
 t2.insert(5)
