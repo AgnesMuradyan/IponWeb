@@ -79,7 +79,7 @@ list1 = [9, 8, 7, 6, 5, 4, 3, 2, 1]
 list2 = []
 list3 = [1]
 list4 = [5, 2, 3, 1]
-list5 = [3, -1]
+list5 = [3, -1, 10, -10]
 merge_sort1(list0)
 print(list0)
 merge_sort1(list1)

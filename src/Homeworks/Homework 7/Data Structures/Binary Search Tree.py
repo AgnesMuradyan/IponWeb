@@ -168,11 +168,11 @@ t2.insert(40)
 t2.insert(38)
 
 t2.inorder(t2.root)
-t2.delete(10)
+# t2.delete(10)
 print()
 t2.inorder(t2.root)
 print()
 print(t2.get_max().val)
 print(t2.get_min().val)
-print(t2.search(25).val)
+# print(t2.search(10).val)
 

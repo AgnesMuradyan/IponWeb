@@ -14,7 +14,7 @@ list1 = [9, 8, 7, 6, 5, 4, 3, 2, 1]
 list2 = []
 list3 = [1]
 list4 = [5, 2, 3, 1]
-list5 = [3, -1]
+list5 = [3, -1, 6, -10]
 
 print(insertion_sort(list0))
 print(insertion_sort(list1))
