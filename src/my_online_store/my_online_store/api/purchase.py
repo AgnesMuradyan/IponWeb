@@ -63,6 +63,10 @@ class PurchaseView(View):
              'customer': str(purchase.customer), 'total_price': str(purchase.total_price)})
 
     @staticmethod
+    def add_back(request, id):
+        pass
+
+    @staticmethod
     def edit(request, id):
         data = json.loads(request.body)
         try:
@@ -77,9 +81,9 @@ class PurchaseView(View):
         if 'item_ids' in data:
             try:
                 items = Item.objects.filter(id__in=data['item_ids'])
-                curr = copy(purchase.items.all())
-                purchase.items.clear()
                 if len(data['item_ids']) == len(items):
+                    curr = copy(purchase.items.all())
+                    purchase.items.clear()
                     for item in items:
                         if item.quantity > 0:
                             purchase.items.add(item)
@@ -87,8 +91,14 @@ class PurchaseView(View):
                             item.save()
                         else:
                             # purchase.delete()
+                            for item1 in purchase.items.all():
+                                item1.quantity += 1
+                                item1.save()
                             purchase.items.set(curr)
                             return failed_status("There is no item you want to add")
+                    for item in curr:
+                        item.quantity += 1
+                        item.save()
                 else:
                     return failed_status("No items with this id")
             except ObjectDoesNotExist:
