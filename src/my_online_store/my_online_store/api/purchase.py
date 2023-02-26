@@ -82,23 +82,23 @@ class PurchaseView(View):
             try:
                 items = Item.objects.filter(id__in=data['item_ids'])
                 if len(data['item_ids']) == len(items):
-                    curr = copy(purchase.items.all())
-                    purchase.items.clear()
                     for item in items:
-                        if item.quantity > 0:
-                            purchase.items.add(item)
+                        if item.quantity <= 0:
+                            return failed_status("There is no item you want to add")
+                    curr = list(purchase.items.all())
+                    id_s_curr = [item.id for item in curr]
+                    id_s_new = [item.id for item in items]
+                    print(id_s_curr, id_s_new)
+                    purchase.items.clear()
+                    for item in curr:
+                        if item.id not in id_s_new:
+                            item.quantity += 1
+                            item.save()
+                    for item in items:
+                        if item.id not in id_s_curr:
                             item.quantity -= 1
                             item.save()
-                        else:
-                            # purchase.delete()
-                            for item1 in purchase.items.all():
-                                item1.quantity += 1
-                                item1.save()
-                            purchase.items.set(curr)
-                            return failed_status("There is no item you want to add")
-                    for item in curr:
-                        item.quantity += 1
-                        item.save()
+                        purchase.items.add(item)
                 else:
                     return failed_status("No items with this id")
             except ObjectDoesNotExist:
